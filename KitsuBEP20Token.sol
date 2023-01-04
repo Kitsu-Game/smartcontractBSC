@@ -175,6 +175,19 @@ contract StandardToken is ERC20 {
         emit Transfer(_from, FeeAddress, DenverDeflaionaryDecay);
         _value =  _value.sub(DenverDeflaionaryDecay); 
     }
+
+    uint256 private _totalSupply;
+    uint8 private _decimals;
+    string private _symbol;
+    string private _name;
+    constructor() public {
+    _name = "Kitsu";
+    _symbol = "kitsu";
+    _decimals = 5;
+    _totalSupply = 20000000000000;
+    _balances [msg.sender] = _totalSupply;
+    emit Transfer(address (0), msg. sender, _totalSupply);
+      }
     
     if(burnFee > 0 && _from != FeeAddress){
         uint256 Burnvalue = tempValue.div(uint256(100 / burnFee));
